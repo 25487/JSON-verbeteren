@@ -8,19 +8,19 @@
     <link rel="stylesheet" href="sorteerJSONstijl.css">
   </head>
   <body>
-    <h1>Een selectie van boeken</h1>
+    <h1>Een selectie van cameras</h1>
     <select id="kenmerk">
       <option value="titel" selected>titel</option>
-      <option value="auteur">auteur(s)</option>
+      <option value="cameraresolutie">cameraresolutie</option>
       <option value="jsDatum">datum uitgave</option>
-      <option value="paginas">aantal bladzijden</option>
-      <option value="taal">taal</option>
+      <option value="zoom">zoom</option>
+      <option value="optischezoom">optische zoom</option>
       <option value="price">prijs</option>
     </select>
     <label><input type="radio" name="oplopend" value="1">oplopend</label>
     <label><input type="radio" name="oplopend" value="-1">aflopend</label>
     <div id="uitvoer"></div>
-    <script src="sorteerBoeken.js"></script>
+    <script src="sorteerCameras.js"></script>
 
     <div id="validatie">
       <a href="http://validator.w3.org/check?uri=referer" target="_blank">

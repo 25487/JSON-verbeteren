@@ -7,7 +7,7 @@ xmlhttp.onreadystatechange = function() {
     sorteerBoekObj.sorteren();
   }
 }
-xmlhttp.open('GET', "boeken.json", true);
+xmlhttp.open('GET', "cameras.json", true);
 xmlhttp.send();
 // een tabel kop in markup uitvoeren uit een array
 const maakTabelKop = (arr) => {
@@ -127,12 +127,12 @@ let sorteerBoekObj = {
   uitvoeren: function(data) {
     let uitvoer = maakTabelKop(
       ["titel",
-        "auteur(s)",
+        "cameraresolutie",
         "cover",
         "uitgave",
-        "bladzijden",
-        "taal",
-        "EAN",
+        "zoom",
+        "optischezoom",
+        "kwaliteit",
         "price"
       ]);
     for (let i = 0; i < data.length; i++) {
@@ -145,15 +145,15 @@ let sorteerBoekObj = {
         "'class='boekSelectie__cover' alt ='" +
         data[i].titel +
         "'>";
-      let auteurs = maakOpsomming(data[i].auteur);
+      let cameraresolutie = maakOpsomming(data[i].auteur);
       uitvoer += maakTabelRij(
         [data[i].titel,
-          auteurs,
+          cameraresolutie,
           imgElement,
           data[i].uitgave,
-          data[i].paginas,
-          data[i].taal,
-          data[i].ean,
+          data[i].zoom,
+          data[i].optischezoom,
+          data[i].kwaliteit,
           data[i].price
         ], accent)
     }
