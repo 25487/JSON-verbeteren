@@ -1,4 +1,4 @@
-//JSON Importeren
+//json import
 let xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
@@ -7,8 +7,10 @@ xmlhttp.onreadystatechange = function() {
     sorteerBoekObj.sorteren();
   }
 }
+
 xmlhttp.open('GET', "cameras.json", true);
 xmlhttp.send();
+
 // een tabel kop in markup uitvoeren uit een array
 const maakTabelKop = (arr) => {
   let kop = '<table class="boekSelectie"><tr>';
@@ -18,6 +20,7 @@ const maakTabelKop = (arr) => {
   kop += "</tr>";
   return kop;
 }
+
 const maakTabelRij = (arr, accent) => {
   let rij = "";
   if (accent == true) {
@@ -31,6 +34,7 @@ const maakTabelRij = (arr, accent) => {
   rij += "</tr>";
   return rij;
 }
+
 //functie die van een maand string een nummer maak
 const geefMaandNummer = (maand) => {
   let nummer;
@@ -73,15 +77,18 @@ const geefMaandNummer = (maand) => {
       break;
     default:
       nummer = 0
+
   }
   return nummer;
 }
+
 // functie die string van maand jaar omzet in een dat-object
 const maakJSdatum = (maandJaar) => {
   let mjArray = maandJaar.split(" ");
   let datum = new Date(mjArray[1], geefMaandNummer(mjArray[0]));
   return datum;
 }
+
 // maakt van array een opsomming
 const maakOpsomming = (array) => {
   let string = "";
@@ -95,6 +102,7 @@ const maakOpsomming = (array) => {
         break;
       default:
         string += array[i] + ", ";
+
     }
   }
   return string;
@@ -127,16 +135,16 @@ let sorteerBoekObj = {
   uitvoeren: function(data) {
     let uitvoer = maakTabelKop(
       ["titel",
-        "cameraresolutie",
-        "cover",
-        "uitgave",
-        "zoom",
-        "optischezoom",
-        "kwaliteit",
-        "price"
+      "cameraresolutie",
+      "cover",
+      "uitgave",
+      "zoom",
+      "wifi",
+      "kwaliteit",
+      "prijs"
       ]);
     for (let i = 0; i < data.length; i++) {
-      // geef rijen afwisselend een accent mee
+      // geef reijen afwisselend een accent mee
       let accent = false;
       i % 2 == 0 ? accent = true : accent = false;
       let imgElement =
@@ -145,14 +153,14 @@ let sorteerBoekObj = {
         "'class='boekSelectie__cover' alt ='" +
         data[i].titel +
         "'>";
-      let cameraresolutie = maakOpsomming(data[i].auteur);
+      let auteurs = maakOpsomming(data[i].auteur);
       uitvoer += maakTabelRij(
         [data[i].titel,
-          cameraresolutie,
+          auteurs,
           imgElement,
           data[i].uitgave,
           data[i].zoom,
-          data[i].optischezoom,
+          data[i].wifi,
           data[i].kwaliteit,
           data[i].price
         ], accent)
