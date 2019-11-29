@@ -1,21 +1,43 @@
-.boekSelectie__cover{
+
+body {
+  font-family: Arial, sans-serif;
+}
+.boekSelectie__cover {
   max-width: 100px;
 }
-
-.boekSelectie__rij--accent{
-  background-color: #def;
+.boekSelectie__rij--accent {
+  background: rgb(0, 128, 255);
 }
-.boekSelectie__data-cel{
+.boekSelectie__data-cel {
   padding: 1em;
   vertical-align: top;
 }
-.boekSelectie__data-cel:nth-child(3){
+.boekSelectie__data-cel:ntd-child(3) {
   padding: 0;
 }
 
-#validatie img {
-    height: 2em;
-    width: auto;
-    border: 0;
-    margin: 0 .3em;
+.boekSelectie {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-gap: 1em;
+  margin-bottom: 1em;
+}
+.boekSelectie:nth-child(even) {
+  background: rgb(255, 255, 255);
+}
+.boekSelectie__main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: .5em 0;
+}
+
+
+.boekSelectie__overig {
+  margin: 0;
+  font-size: .8em;
+  color: rgb(134, 134, 134);
+}
+.boekSelectie__prijs {
+  font-size: 2em;
+  padding: .5em;
 }

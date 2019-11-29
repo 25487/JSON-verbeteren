@@ -10,18 +10,19 @@
   <body>
     <h1>Een selectie van cameras</h1>
     <select id="kenmerk">
-      <option value="titel" selected>Titel</option>
-      <option value="auteur">Cameraresolutie</option>
-      <option value="jsDatum">Datum uitgave</option>
-      <option value="zoom">Zoom</option>
-      <option value="wifi">Wifi</option>
-      <option value="kwaliteit">Kwaliteit</option>
-      <option value="price">Prijs</option>
+        <option value="titelUpper">Titel</option>
+        <option value="sortAuteur">Auteur(s)</option>
+        <option value="JSDate">Datum uitgave</option>
+        <option value="paginas">Aantal bladzijden</option>
+        <option value="taal">Taal</option>
+        <option value="prijs">Prijs</option>
     </select>
+
     <label><input type="radio" name="oplopend" value="1">oplopend</label>
     <label><input type="radio" name="oplopend" value="-1">aflopend</label>
-    <div id="uitvoer"></div>
-    <script src="sorteerCameras.js"></script>
+
+    <div id="boeken"></div>
+    <script src="sorteerNieuw.js"></script>
 
     <div id="validatie">
       <a href="http://validator.w3.org/check?uri=referer" target="_blank">
