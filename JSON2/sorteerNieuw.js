@@ -79,7 +79,7 @@ const keerTekstOn = (string) => {
 
 
 
-//sorteren
+// Dit sorteert
 let sortBookObjects = {
     data: "",
     unique: "titelUpper",
@@ -89,12 +89,12 @@ let sortBookObjects = {
             item.JSDate = makeValidDate(item.uitgave);
         });
     },
-    //sorteren2
+    // Verdere sortatie
     sorteren: function(){
         this.data.sort( (a,b) => a[this.unique] > b[this.unique] ? 1*this.oplopend :  -1*this.oplopend);
         this.uitvoeren(this.data);
     },
-    //tabel
+    // Tabel aan het maken
     uitvoeren: function(data){
         //leeg
         document.getElementById("boeken").innerHTML = "";
@@ -103,25 +103,25 @@ let sortBookObjects = {
             let sectie = document.createElement('section');
             sectie.className = 'boekSelectie';
 
-            //grid
+            // grid fixer
             let main = document.createElement('main');
             main.className = "boekSelectie__main";
 
-            //cover
+            // de cover
             let afbeelding = document.createElement("img");
             afbeelding.className = "boekSelectie__cover";
             afbeelding.setAttribute("src", boek.cover);
             afbeelding.setAttribute("alt", keerTekstOn(boek.titel));
 
-            //titel
+            // Titel
             let titel = document.createElement('h3');
             titel.className = "boekSelectie__titel";
             titel.textContent = keerTekstOn(boek.titel);
 
-            //schrijvers
+            // Auteurs
             let auteurs = document.createElement('p');
             auteurs.className = 'boekSelectie__auteurs';
-            //namen
+            // boeken auteurs
             boek.auteur[0] = keerTekstOn(boek.auteur[0]);
             auteurs.textContent = makeSummary(boek.auteur);
 
@@ -131,12 +131,10 @@ let sortBookObjects = {
             overig.textContent = "Datum: " + boek.uitgave + " | Pagina's: " + boek.paginas + " | Taal: " + boek.taal + " | EAN: " + boek.ean;
 
 
-            //prijs van boekem
+           //de prijs sorteren
             let prijs = document.createElement("div");
             prijs.className = "boekSelectie__prijs";
-            //prijs van boeken 2
             prijs.textContent = boek.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: "currency"});
-
 
             sectie.appendChild(afbeelding);
             main.appendChild(titel);

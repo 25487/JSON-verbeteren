@@ -107,7 +107,7 @@
       "paginas": 597,
       "taal": "Nederlands",
       "ean": "9789041422903",
-      "prijs": 5.00
+      "prijs": 15.00
    },
    {
       "titel": "Houden van dingen die niet perfect zijn",
@@ -138,5 +138,35 @@
       "taal": "Engels",
       "ean": "9781788622882",
       "prijs": 55.50
-   }
+   },
+   {
+     "titel": "Game of Thrones",
+     "cover": "https://www.boekenwereld.com/media/catalog/product/cache/image/890x650/e9c3970ab036de70892d86c6d221abfe/5/3/531299015840b0.83164747_0d247aba7621a87cf5e1f4b5ded9c01d.jpg",
+     "auteur": ["George RR Martin"],
+     "uitgave": "oktober 2018",
+     "paginas": 	"768",
+     "taal": "Engels",
+     "ean": "9789024564385",
+      "prijs": 15.00
+   },
+   {
+     "titel": "Star Wars: Return of The Jedi Boek",
+     "cover": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/4/6/0/1/9200000059351064.jpg",
+     "auteur": ["Al Williamson"],
+     "uitgave": "maart 2016",
+     "paginas": 	"768",
+     "taal": "Nederlands",
+     "ean": "9789460784934",
+      "prijs": 9.90
+   },
+   {
+   "titel": "Ready Player One",
+   "cover": "https://s.s-bol.com/imgbase0/imagebase3/large/FC/9/1/5/0/9200000092850519.jpg",
+   "auteur": ["Ernest Cline"],
+   "uitgave": "mei 2018",
+   "paginas": 	"368",
+   "taal": "Engels",
+   "ean": "9789460784934",
+    "prijs": 12.50
+ }
 ]
