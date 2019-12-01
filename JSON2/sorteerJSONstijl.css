@@ -1,10 +1,33 @@
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family:  sans-serif;
 }
+
+.winkelwagen{
+  width: 3em;
+  height: 3em;
+  background-image: url('afbeelding/shopping-cart.png');
+  background-size: contain;
+  float: right;
+  margin-right: 3em;
+  position: relative;
+}
+.winkelwagen__aantal:not(:empty){
+  background-color: #f00;
+  display: inline-block;
+  color: #FFF;
+  position: absolute;
+  top: -.5em;
+  right: -.9em;
+  line-height: .5em;
+  padding: .5em;
+  border-radius: 50%;
+}
+
 .boekSelectie__cover {
   max-width: 100px;
 }
+
 .boekSelectie__rij--accent {
   background: rgb(0, 128, 255);
 }
@@ -31,6 +54,9 @@ body {
   padding: .5em 0;
 }
 
+.boekSelectie__titel {
+    margin: 0;
+}
 .boekSelectie__overig {
   margin: 0;
   font-size: .8em;
@@ -39,6 +65,18 @@ body {
 .boekSelectie__prijs {
   font-size: 2em;
   padding: .5em;
+}
+.boekSelectie__knop{
+  display: block;
+  margin: 1.5em auto;
+  background-color: #d00;
+  cursor: pointer;
+  color: #fff;
+  padding: 1em;
+  border-radius: 1em;
+}
+.boekSelectie__knop:hover{
+  background-color: #900;
 }
 @media screen and (min-width: 60em) {
     #boeken {
@@ -52,5 +90,18 @@ body {
     .boekSelectie:nth-child(4n+2),
     .boekSelectie:nth-child(4n+3) {
         background-color: #eee;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #boeken {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 2em;
+    }
+    .boekSelectie:nth-child(odd) {
+        background-color: inherit;
+    }
+    .boekSelectie:nth-child(2n+0) {
+        background-color: #EEE;
     }
 }
