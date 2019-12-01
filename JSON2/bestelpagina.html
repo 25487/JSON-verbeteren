@@ -2,28 +2,18 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>JSON</title>
+    <title>Bestelling</title>
     <meta name="author" content="Taurese Usman">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="sorteerJSONstijl.css">
   </head>
   <body>
     <a href="bestelpagina.html"><div class="winkelwagen"><span class="winkelwagen__aantal"></span></div></a>
-    <h1>Een selectie van boeken naar mijn keuze</h1>
-    <select id="kenmerk">
-        <option value="titelUpper">Titel</option>
-        <option value="sortAuteur">Auteur(s)</option>
-        <option value="JSDate">Datum uitgave</option>
-        <option value="paginas">Aantal bladzijden</option>
-        <option value="taal">Taal</option>
-        <option value="prijs">Prijs</option>
-    </select>
+    <h1>De Boeken:</h1>
+<p><a href="index.html">Terug naar de boeken</a></p>
 
-    <label><input type="radio" name="oplopend" value="1">oplopend</label>
-    <label><input type="radio" name="oplopend" value="-1">aflopend</label>
-
-    <div id="boeken"></div>
-    <script src="sorteerNieuw.js"></script>
+    <div id="bestelling"></div>
+    <script src="bestelpagina.js"></script>
 
     <footer>
       <a href="http://validator.w3.org/check?uri=referer" target="_blank">

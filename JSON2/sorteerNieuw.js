@@ -73,13 +73,34 @@ const keerTekstOn = (string) => {
     }
     return string;
 }
+//voor de winkelwagen
+let winkelwagen = {
+  items: [],
 
+  haalItemsOp: function() {
+     let bestelling;
+    if ( localStorage.getItem('besteldeBoeken') == null ) {
+      bestelling = [];
+    } else {
+      bestelling = JSON.parse(localStorage.getItem('besteldeBoeken'));
+      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
+    }
+    return bestelling;
+  },
+  toevoegen: function(el) {
+    this.items = this.haalItemsOp();
+    this.items.push(el);
+    localStorage.setItem('besteldeBoeken', JSON.stringify(this.items));
+    document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+  }
 
+}
+winkelwagen.haalItemsOp();
 
 
 let sortBookObjects = {
     data: "",
-    unique: "titelUpper",
+    unique: 'titelUpper',
     oplopend: 1,
     addJSDate: function () {
         this.data.forEach((item) => {
@@ -94,7 +115,7 @@ let sortBookObjects = {
     //Verwerking van tabel
     uitvoeren: function(data){
         //Uitvoer leeg maken
-        document.getElementById("boeken").innerHTML = "";
+        document.getElementById('boeken').innerHTML = "";
 
         data.forEach(boek => {
             let sectie = document.createElement('section');
@@ -102,17 +123,17 @@ let sortBookObjects = {
 
             //De grid elementen
             let main = document.createElement('main');
-            main.className = "boekSelectie__main";
+            main.className = 'boekSelectie__main';
 
             //maak cover
             let afbeelding = document.createElement('img');
-            afbeelding.className = "boekSelectie__cover";
+            afbeelding.className = 'boekSelectie__cover';
             afbeelding.setAttribute("src", boek.cover);
             afbeelding.setAttribute("alt", keerTekstOn(boek.titel));
 
             //title opmaak
             let titel = document.createElement('h3');
-            titel.className = "boekSelectie__titel";
+            titel.className = 'boekSelectie__titel';
             titel.textContent = keerTekstOn(boek.titel);
 
             //Auteurs
@@ -123,20 +144,24 @@ let sortBookObjects = {
 
             //overige informatie
             let overig = document.createElement('p');
-            overig.className = "boekSelectie__overig";
+            overig.className = 'boekSelectie__overig';
             overig.textContent = "Datum: " + boek.uitgave + " | Pagina's: " + boek.paginas + " | Taal: " + boek.taal + " | EAN: " + boek.ean;
 
 
             // de prijs
             let prijs = document.createElement('div');
-            prijs.className = "boekSelectie__prijs";
-            prijs.textContent = boek.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: "currency"});
+            prijs.className = 'boekSelectie__prijs';
+            prijs.textContent = boek.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
 
             // knop
             let knop = document.createElement('button');
-            knop.className = 'boekSelectie__knop';
-            knop.innerHTML = 'Voeg toe aan<br>Winkelwagen;'
+    knop.className = 'boekSelectie__knop';
+    knop.innerHTML = "Voeg toe aan<br>winkelwagen"
+    knop.addEventListener('click', () => {
+        winkelwagen.toevoegen(boek);
+
+              })
 
 
             sectie.appendChild(afbeelding);
@@ -146,7 +171,7 @@ let sortBookObjects = {
             sectie.appendChild(main);
             prijs.appendChild(knop);
             sectie.appendChild(prijs);
-            document.getElementById("boeken").appendChild(sectie);
+            document.getElementById('boeken').appendChild(sectie);
         });
     }
 }
