@@ -1,5 +1,3 @@
-
-
 const giveMonthNumber = (month) => {
     let number;
     switch(month){
@@ -39,7 +37,7 @@ let winkelwagen = {
       bestelling = [];
     } else {
       bestelling = JSON.parse(localStorage.getItem('besteldeBoeken'));
-      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
+
 
     }
     bestelling.forEach( item => {
@@ -48,10 +46,34 @@ let winkelwagen = {
     return bestelling;
   },
 
+  verwijderItem: function(ean) {
+       this.items.forEach((item, index) => {
+           if (item.ean == ean) {
+               this.items.splice(index, 1);
+               ean = 4;
+           }
+       })
+       localStorage.setItem('besteldeBoeken', JSON.stringify(this.items));
+       document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+       if (this.items.length > 0) {
+           document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+       } else {
+           document.querySelector('.winkelwagen__aantal').innerHTML = "";
+       }
+       this.uitvoeren();
+
+  },
+  totaalPrijs: function() {
+      let totaal = 0;
+      this.items.forEach( boek => {
+          totaal += boek.prijs;
+      });
+      return totaal;
+  },
 
   uitvoeren: function() {
     //Uitvoer leeg maken
-    document.getElementById("boeken").innerHTML = "";
+    document.getElementById('bestelling').innerHTML = "";
 
     this.items.forEach(boek => {
         let sectie = document.createElement('section');
@@ -79,14 +101,37 @@ let winkelwagen = {
         //verwijder
         let verwijder = document.createElement('div');
         verwijder.className = "besteldBoek__verwijder";
-
+        verwijder.addEventListener('click', () => {
+                this.verwijderItem(boek.ean);
+            });
 
         sectie.appendChild(afbeelding);
         sectie.appendChild(titel);
         sectie.appendChild(prijs);
         sectie.appendChild(verwijder);
-        document.getElementById("boeken").appendChild(sectie);
+        document.getElementById('bestelling').appendChild(sectie);
+
     });
+      let sectie = document.createElement('sectie');
+      sectie.className = 'besteldBoek';
+
+      let totaalTekst = document.createElement('div');
+       totaalTekst.className = 'besteldBoek__totaal-tekst';
+       totaalTekst.innerHTML = 'Totaal: ';
+
+       let totaalPrijs = document.createElement('div');
+        totaalPrijs.className = 'besteldBoek__totaal-prijs';
+        totaalPrijs.textContent = this.totaalPrijs().toLocaleString('nl-NL', { currency: 'EUR', style: 'currency' });
+
+        sectie.appendChild(totaalTekst);
+        sectie.appendChild(totaalPrijs);
+        document.getElementById('bestelling').appendChild(sectie);
+
+    if (this.items.length > 0) {
+        document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+    } else {
+        document.querySelector('.winkelwagen__aantal').innerHTML = '';
+    }
 
   }
 

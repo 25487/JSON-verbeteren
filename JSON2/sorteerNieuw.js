@@ -83,17 +83,26 @@ let winkelwagen = {
       bestelling = [];
     } else {
       bestelling = JSON.parse(localStorage.getItem('besteldeBoeken'));
-      document.querySelector('.winkelwagen__aantal').innerHTML = bestelling.length;
-    }
-    return bestelling;
-  },
+                  bestelling.forEach(item => {
+                      this.items.push(item);
+                  });
+                  this.uitvoeren();
+              }
+              return bestelling;
+          },
   toevoegen: function(el) {
     this.items = this.haalItemsOp();
     this.items.push(el);
     localStorage.setItem('besteldeBoeken', JSON.stringify(this.items));
-    document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+    this.uitvoeren();
+  },
+  uitvoeren: function() {
+      if (this.items.length > 0) {
+          document.querySelector('.winkelwagen__aantal').innerHTML = this.items.length;
+      } else {
+          document.querySelector('.winkelwagen__aantal').innerHTML = '';
+      }
   }
-
 }
 winkelwagen.haalItemsOp();
 
