@@ -66,7 +66,7 @@ const makeSummary = (array) => {
     return string;
 }
 
-const keerTekstOn = (string) => {
+const keerTekstOm = (string) => {
     if(string.indexOf(',') != -1) {
         let array = string.split(',');
         string = array[1] + ' ' + array[0];
@@ -138,17 +138,17 @@ let sortBookObjects = {
             let afbeelding = document.createElement('img');
             afbeelding.className = 'boekSelectie__cover';
             afbeelding.setAttribute("src", boek.cover);
-            afbeelding.setAttribute("alt", keerTekstOn(boek.titel));
+            afbeelding.setAttribute("alt", keerTekstOm(boek.titel));
 
             //title opmaak
             let titel = document.createElement('h3');
             titel.className = 'boekSelectie__titel';
-            titel.textContent = keerTekstOn(boek.titel);
+            titel.textContent = keerTekstOm(boek.titel);
 
             //Auteurs
             let auteurs = document.createElement('p');
             auteurs.className = 'boekSelectie__auteurs';
-            boek.auteur[0] = keerTekstOn(boek.auteur[0]);
+            boek.auteur[0] = keerTekstOm(boek.auteur[0]);
             auteurs.textContent = makeSummary(boek.auteur);
 
             //overige informatie
